@@ -22,7 +22,7 @@
 
     <string name="share_food_success_msg">Share food successfully.</string>
     <string name="share_food_fail_msg">Error. Please check your input.</string>
-    <string name="request_food_msg">Request food succesfully.</string>
+    <string name="request_food_msg">Request food successfully.</string>
 
     <string-array name="spinner_food">
         <item>Nasi Lemak</item>
@@ -47,6 +47,5 @@
         <item>5PM</item>
         <item>6PM</item>
     </string-array>
-
 
 </resources>

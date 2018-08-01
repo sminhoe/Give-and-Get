@@ -124,7 +124,6 @@ public class NotiAdapter extends RecyclerView.Adapter<NotiAdapter.foodviewholder
 
             noti_list = (LinearLayout)itemView.findViewById(R.id.noti_list);
 
-
             itemView.setOnCreateContextMenuListener(this);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

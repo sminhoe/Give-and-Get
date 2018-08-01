@@ -27,13 +27,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -55,10 +60,10 @@ public class ShareFragment extends Fragment implements AdapterView.OnItemSelecte
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_share, container, false);
+        final View v = inflater.inflate(R.layout.fragment_share, container, false);
 
         btn_selDate = (Button) v.findViewById(R.id.btn_selDate);
         txtDate = (TextView) v.findViewById(R.id.tv);
@@ -79,57 +84,89 @@ public class ShareFragment extends Fragment implements AdapterView.OnItemSelecte
 
         btn_submit = (Button) v.findViewById(R.id.btn_submit_food);
 
-        spinner1 = (Spinner)v.findViewById(R.id.spinner_selectFood);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),R.array.spinner_food,R.layout.support_simple_spinner_dropdown_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner1.setAdapter(adapter);
-        spinner1.setOnItemSelectedListener(this);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("FoodList");
 
-        spinner3 = (Spinner)v.findViewById(R.id.spinner_selectTime);
-        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(getContext(),R.array.spinner_time,R.layout.support_simple_spinner_dropdown_item);
-        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner3.setAdapter(adapter3);
-        spinner3.setOnItemSelectedListener(this);
-
-        auth = FirebaseAuth.getInstance();
-        Date c = Calendar.getInstance().getTime();
-
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-        final String formattedDate = df.format(c);
-
-        btn_submit.setOnClickListener(new View.OnClickListener() {
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                firebaseUser = auth.getCurrentUser();
-                String uid = firebaseUser.getUid();
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Is better to use a List, because you don't know the size
+                // of the iterator returned by dataSnapshot.getChildren() to
+                // initialize the array
+                final List<String> areas = new ArrayList<String>();
 
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Food");
-                String key = ref.push().getKey();
+                for (DataSnapshot areaSnapshot : dataSnapshot.getChildren()) {
+                    String f_status = areaSnapshot.child("f_status").getValue(String.class);
+                    if(f_status.equals("AVAILABLE")) {
+                        String f_Name = areaSnapshot.child("f_name").getValue(String.class);
+                        areas.add(f_Name);
+                    }
+                }
 
-                String u_food = spinner1.getSelectedItem().toString();
-                String u_time= spinner3.getSelectedItem().toString();
-                String txtD = txtDate.getText().toString();
+                final Spinner areaSpinner = (Spinner)v.findViewById(R.id.spinner_selectFood);
+                ArrayAdapter<String> areasAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, areas);
+                areasAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                areaSpinner.setAdapter(areasAdapter);
 
-                Food myFood = new Food(uid, u_food,txtD,u_time,formattedDate,"AVAILABLE",key,"none");
-                progressDialog.show();
+                spinner3 = (Spinner)v.findViewById(R.id.spinner_selectTime);
+                ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(getContext(),R.array.spinner_time,R.layout.support_simple_spinner_dropdown_item);
+                adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner3.setAdapter(adapter3);
+//                spinner3.setOnItemSelectedListener(this);
 
-                ref.child(key).setValue(myFood).addOnCompleteListener(new OnCompleteListener<Void>() {
+                auth = FirebaseAuth.getInstance();
+                Date c = Calendar.getInstance().getTime();
+
+                SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+                final String formattedDate = df.format(c);
+
+                btn_submit.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getContext(), getString(R.string.share_food_success_msg), Toast.LENGTH_SHORT).show();
-                            getActivity().finish();
-                            startActivity(new Intent(getContext(), Main2Activity.class));
-                        } else {
-                            progressDialog.cancel();
-                            Toast.makeText(getContext(),  getString(R.string.share_food_fail_msg), Toast.LENGTH_SHORT).show();
-                            getActivity().finish();
-                            startActivity(new Intent(getContext(), Main3Activity.class));
-                        }
+                    public void onClick(View v) {
+                        firebaseUser = auth.getCurrentUser();
+                        String uid = firebaseUser.getUid();
+
+                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Food");
+                        String key = ref.push().getKey();
+
+                        String u_food = areaSpinner.getSelectedItem().toString();
+                        String u_time= spinner3.getSelectedItem().toString();
+                        String txtD = txtDate.getText().toString();
+
+                        Food myFood = new Food(uid, u_food,txtD,u_time,formattedDate,"AVAILABLE",key,"none");
+                        progressDialog.show();
+
+                        ref.child(key).setValue(myFood).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getContext(), getString(R.string.share_food_success_msg), Toast.LENGTH_SHORT).show();
+                                    getActivity().finish();
+                                    startActivity(new Intent(getContext(), Main2Activity.class));
+                                } else {
+                                    progressDialog.cancel();
+                                    Toast.makeText(getContext(),  getString(R.string.share_food_fail_msg), Toast.LENGTH_SHORT).show();
+                                    getActivity().finish();
+                                    startActivity(new Intent(getContext(), Main3Activity.class));
+                                }
+                            }
+                        });
                     }
                 });
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
+
+//        spinner1 = (Spinner)v.findViewById(R.id.spinner_selectFood);
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),R.array.spinner_food,R.layout.support_simple_spinner_dropdown_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner1.setAdapter(adapter);
+//        spinner1.setOnItemSelectedListener(this);
+
         return v;
     }
 
