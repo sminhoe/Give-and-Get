@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ResetPwActivity"
+    android:background="@color/background_color">
+
+
+    <ImageView
+        android:layout_width = "120dp"
+        android:layout_height= "120dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:id="@+id/logo"
+        android:src="@drawable/logo_medium"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/marginLogin"
+        android:text="Forgot Password?"
+        android:gravity="center"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/marginLogin"
+        android:text="We just need your registered email to sent you
+        password resent instructions."
+        android:gravity="center"
+        android:textSize="12dp"/>
+
+    <EditText
+        style="@style/marginLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your email."
+        android:id="@+id/u_email"/>
+
+     <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_reset_pw"
+        android:text="Reset Password"
+        android:layout_gravity="center"
+         android:textSize="12dp"
+         style="@style/marginLogin"
+        android:textColor="#000000"
+        android:background="@drawable/white_button"
+        />
+
+    <Button
+        android:id="@+id/btn_mainpg"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:text="Main Page"
+        android:textSize="12dp"
+        android:textAllCaps="false"
+        android:textColor="#000000" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone" />
+</LinearLayout>

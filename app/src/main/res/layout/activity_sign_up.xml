@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_color"
+    tools:context=".SignUpActivity">
+
+    <ImageView
+        android:layout_width = "120dp"
+        android:layout_height= "120dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="0dp"
+        android:id="@+id/logo"
+        android:src="@drawable/logo_medium" />
+
+    <EditText
+        style="@style/marginLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="abc@gmail.com"
+        android:id="@+id/u_email"/>
+
+    <EditText
+        style="@style/marginLogin"
+        android:id="@+id/u_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="User Name" />
+
+    <EditText
+        style="@style/marginLogin"
+        android:id="@+id/u_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="******" />
+
+    <EditText
+        style="@style/marginLogin"
+        android:id="@+id/u_conpassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="******" />
+
+    <TextView
+        style="@style/marginLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="10dp"
+        android:text="Password must contains minimum 6 characters."/>
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="10dp"
+        android:text="(at least 1 Lowercase, 1 Uppercase and, 1 Number)"/>
+
+    <Button
+        android:id="@+id/btn_signup"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/white_button"
+        android:text="Sign Up"
+        android:textAllCaps="false"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/btn_signin"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:text="@string/sign_in_pg"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="12dp"
+        android:layout_marginBottom="5dp"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone" />
+
+</LinearLayout>

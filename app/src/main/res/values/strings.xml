@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Give and Get</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="passerror">Enter a valid name</string>
+    <string name="emailerror">Enter a valid email</string>
+
+    <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
+    <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
+    <string name="auth_success">Welcome Back!</string>
+    <string name="sign_up_success">Welcome to Give and Get!</string>
+    <string name="sign_in_up_error">Error. Please check your email or password.</string>
+    <string name="sign_in_pg">Already a member? Login now!</string>
+    <string name="reset_pw_msg">We have sent you instructions to reset your password.</string>
+    <string name="reset_pw_msgfail">Failed to send reset email.</string>
+
+    <string name="empty_edittext_msg">Please fill in.</string>
+    <string name="required_msg">Required.</string>
+    <string name="email_invalid_msg">Email Invalid.</string>
+    <string name="password_require_msg">Password must contains minimum 6 characters at least 1 Lowercase, 1 Uppercase and, 1 Number.</string>
+    <string name="password_not_match_msg">Password not matched.Try again.</string>
+
+    <string name="share_food_success_msg">Share food successfully.</string>
+    <string name="share_food_fail_msg">Error. Please check your input.</string>
+    <string name="request_food_msg">Request food succesfully.</string>
+
+    <string-array name="spinner_food">
+        <item>Nasi Lemak</item>
+        <item>Pau</item>
+        <item>Nasi Goreng</item>
+        <item>Dim Sum</item>
+        <item>Makanan Ringan</item>
+        <item>Mee</item>
+        <item>Oneh-oneh</item>
+    </string-array>
+
+    <string-array name="spinner_time">
+        <item>8AM</item>
+        <item>9AM</item>
+        <item>10AM</item>
+        <item>11AM</item>
+        <item>12PM</item>
+        <item>1PM</item>
+        <item>2PM</item>
+        <item>3PM</item>
+        <item>4PM</item>
+        <item>5PM</item>
+        <item>6PM</item>
+    </string-array>
+
+
+</resources>

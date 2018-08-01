@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ProfileFragment"
+    android:background="@color/graylight">
+
+        <!-- TODO: Update blank fragment layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@null">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:background="@drawable/gradientbackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_marginTop="30dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:src="@drawable/img_avatar2"
+                        android:id="@+id/user_image"/>
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="UserName"
+                        android:textColor="#fff"
+                        android:textStyle="bold"
+                        android:textSize="21sp"
+                        android:id="@+id/user_name"/>
+                </LinearLayout>
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/btn_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:text="     My Listings"
+                        android:textAllCaps="false"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:drawableLeft="@drawable/ic_list_black_24dp"
+                        android:gravity="left|center_vertical"
+                        android:drawableRight="@drawable/ic_chevron_right_black_24dp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@android:color/darker_gray" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/btn_request"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:text="     My Request"
+                        android:textAllCaps="false"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:drawableLeft="@drawable/ic_history_black_24dp"
+                        android:gravity="left|center_vertical"
+                        android:drawableRight="@drawable/ic_chevron_right_black_24dp"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@android:color/darker_gray" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/btn_acc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:text="     My Account"
+                        android:textAllCaps="false"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:drawableLeft="@drawable/ic_person_black_24dp"
+                        android:gravity="left|center_vertical"
+                        android:drawableRight="@drawable/ic_chevron_right_black_24dp"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@android:color/darker_gray" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/btn_noti"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:text="     Notification"
+                        android:textAllCaps="false"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:drawableLeft="@drawable/ic_notifications_active_black_24dp"
+                        android:gravity="left|center_vertical"
+                        android:drawableRight="@drawable/ic_chevron_right_black_24dp"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@android:color/darker_gray" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/btn_logout"
+                        style="@style/marginSignoutBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/signout_button"
+                        android:text="SIGN OUT"
+                        android:textColor="@color/greywhite"
+                        android:textAllCaps="true" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+</FrameLayout>
