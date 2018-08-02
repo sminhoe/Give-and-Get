@@ -33,7 +33,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".NotiActivity" />
-        <activity android:name=".RequestActivity"></activity>
+        <activity android:name=".RequestActivity" />
+        <activity android:name=".MyaccountActivity" />
+        <activity android:name=".ForgotPsActivity"></activity>
     </application>
 
 </manifest>

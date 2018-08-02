@@ -41,8 +41,6 @@ public class ProfileFragment extends Fragment {
     ImageView imgprofile;
     private ProgressDialog progressDialog;
 
-
-
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -148,7 +146,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v)
             {
-                Intent i = new Intent(getContext(), UserAccActivity.class);
+                Intent i = new Intent(getContext(), MyaccountActivity.class);
                 startActivity(i);
             }
         });
